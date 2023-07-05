@@ -1,0 +1,12 @@
+.PageError {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-grow: 1;
+	height: 100vh;
+
+	> button {
+		margin-top: 10px;
+	}
+}

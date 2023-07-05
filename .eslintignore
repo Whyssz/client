@@ -1,0 +1,8 @@
+.eslintrc.json
+ios/
+android/
+*.config.*
+build
+
+# jest
+jest.config.*
