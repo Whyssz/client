@@ -6,14 +6,58 @@
 	transition: width 0.3s;
 }
 
-.collapsed {
-	width: var(--sidebar-width-collapsed);
-}
-
 .switchers {
 	position: absolute;
 	bottom: 10px;
 	display: flex;
-	justify-content: center;
 	width: 100%;
+	justify-content: center;
+
+	button {
+		margin: 5px 15px;
+	}
+}
+
+.items {
+	margin: 10px 0 10px 30px;
+	display: flex;
+	flex-direction: column;
+
+	.item {
+		margin-top: 10px;
+		display: flex;
+		align-items: center;
+	}
+
+	a {
+		transition: all 0.2s;
+		opacity: 1;
+		visibility: visible;
+	}
+
+	svg {
+		margin-right: 15px;
+		fill: var(--inverted-primary-color);
+	}
+}
+
+.collapsed {
+	width: var(--sidebar-width-collapsed);
+
+	.item {
+		a {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	.switchers {
+		flex-direction: column;
+	}
+}
+
+.collapsedBtn {
+	position: absolute;
+	bottom: 32px;
+	right: -32px;
 }
