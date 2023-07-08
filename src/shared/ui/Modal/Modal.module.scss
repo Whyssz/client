@@ -14,13 +14,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--overlay-color);
+	background: var(--overlay-color);
 }
 
 .content {
 	padding: 20px;
 	border-radius: 12px;
-	background-color: var(--bg-color);
+	background: var(--bg-color);
 	transition: transform 0.3s;
 	transform: scale(0.5);
 	max-width: 60%;

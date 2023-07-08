@@ -40,7 +40,7 @@
 		"import/no-unresolved": "off",
 		"semi": "off",
 		"@typescript-eslint/member-delimiter-style": "off",
-		"indent": [2, "tab"],
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"no-tabs": 0,
 		"@typescript-eslint/indent": "off",
 		"@typescript-eslint/semi": ["error", "always"],
@@ -77,6 +77,7 @@
 		"react/display-name": "off",
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
+		"quote-props": "off",
 
 		// thorough check
 		"eslint no-extra-boolean-cast": [

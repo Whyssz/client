@@ -9,11 +9,7 @@ const App: FC = () => {
 	const { theme } = useTheme();
 
 	return (
-		<div
-			className={classNames('app', { hovered: true, red: false }, [
-				theme,
-			])}
-		>
+		<div className={classNames('app', {}, [theme])}>
 			<Suspense fallback=''>
 				<Navbar />
 				<div className='content-page'>
