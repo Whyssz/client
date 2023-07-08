@@ -1,12 +1,21 @@
 import { StoryFn } from '@storybook/react';
-import { Theme } from 'app/providers/ThemeProvider';
+import { Theme, ThemeProvider } from 'app/providers/ThemeProvider';
 import { BrowserRouter } from 'react-router-dom';
 
 export const MainDecorator = (theme: Theme) => (Story: StoryFn) =>
 	(
-		<BrowserRouter>
-			<div className={`app ${theme}`}>
-				<Story />
-			</div>
-		</BrowserRouter>
+		<ThemeProvider initialTheme={theme}>
+			<BrowserRouter>
+				<div className={`app ${theme}`}>
+					<Story />
+				</div>
+			</BrowserRouter>
+		</ThemeProvider>
 	);
+// (
+// 	<BrowserRouter>
+// 		<div className={`app ${theme}`}>
+// 			<Story />
+// 		</div>
+// 	</BrowserRouter>
+// );

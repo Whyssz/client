@@ -14,8 +14,14 @@
 	--font-xl: var(--font-size-xl) / var(--font-line-xl)
 		var(--font-family-main);
 
+	// Colors
+	--overlay-color: rgba(0 0 0 / 60%);
+
 	// Sizes
 	--navbar-height: 50px;
 	--sidebar-width: 300px;
 	--sidebar-width-collapsed: 80px;
+
+	// Z
+	--modal-z-index: 10;
 }
