@@ -78,6 +78,7 @@
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"quote-props": "off",
+		"array-callback-return": "off",
 
 		// thorough check
 		"eslint no-extra-boolean-cast": [

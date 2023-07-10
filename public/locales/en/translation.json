@@ -6,5 +6,7 @@
 	"Произошла непредвиденная ошибка": "Something went wrong...",
 	"Обновить страницу": "Reload page",
 	"Короткий язык": "En",
-	"Войти": "Sign In"
+	"Войти": "Sign In",
+	"increment": "Increment",
+	"decrement": "Decrement"
 }

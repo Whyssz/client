@@ -3,12 +3,9 @@
 @import 'themes/light';
 @import 'themes/dark';
 
-body {
-	color: var(--primary-color);
-}
-
 .app {
 	background-color: var(--bg-color);
+	color: var(--primary-color);
 	min-height: 100vh;
 }
 

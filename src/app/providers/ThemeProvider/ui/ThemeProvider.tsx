@@ -1,5 +1,9 @@
-import { FC, ReactNode, useMemo, useState } from 'react';
-import { Theme, ThemeContext, defaultTheme } from '../lib/ThemeContext';
+import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
+import {
+	Theme,
+	ThemeContext,
+	defaultTheme,
+} from '../lib/ThemeContext';
 
 interface ThemeProviderProps {
 	initialTheme?: Theme;
@@ -21,6 +25,12 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
 		}),
 		[theme]
 	);
+
+	useEffect(() => {
+		if (!localStorage.getItem('theme')) {
+			localStorage.setItem('theme', Theme.LIGHT);
+		}
+	}, []);
 
 	return (
 		<ThemeContext.Provider value={defaultProps}>
