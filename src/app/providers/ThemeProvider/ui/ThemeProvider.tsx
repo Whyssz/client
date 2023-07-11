@@ -29,6 +29,9 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
 	useEffect(() => {
 		if (!localStorage.getItem('theme')) {
 			localStorage.setItem('theme', Theme.LIGHT);
+			document.body.className = Theme.LIGHT;
+		} else {
+			document.body.className = localStorage.getItem('theme');
 		}
 	}, []);
 

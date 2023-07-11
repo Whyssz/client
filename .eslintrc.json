@@ -29,7 +29,8 @@
 		"config/storybook",
 		"babel.config.json",
 		"/config/jest/*",
-		"scripts/**/*.js"
+		"scripts/**/*.js",
+		"/json-server/*"
 	],
 	"rules": {
 		"react/react-in-jsx-scope": "off",
@@ -42,25 +43,12 @@
 		"@typescript-eslint/member-delimiter-style": "off",
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"no-tabs": 0,
-		"@typescript-eslint/indent": "off",
-		"@typescript-eslint/semi": ["error", "always"],
-		"import/prefer-default-export": "off",
-		"@typescript-eslint/no-unused-vars": "off",
-		"no-unused-vars": "warn",
-		"comma-dangle": "off",
-		"@typescript-eslint/comma-dangle": "off",
-		"@typescript-eslint/consistent-type-imports": "off",
-		"@typescript-eslint/space-before-function-paren": "off",
-		"@typescript-eslint/naming-convention": "off",
-		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/no-misused-promises": [
 			"error",
 			{
 				"checksVoidReturn": false
 			}
 		],
-		"@typescript-eslint/no-floating-promises": "off",
-		"no-trailing-spaces": "off",
 		"i18next/no-literal-string": [
 			"error",
 			{ "markupOnly": true, "ignoreAttribute": ["data-testid", "to"] }
@@ -74,12 +62,26 @@
 				"ignoreComments": true
 			}
 		],
+		"@typescript-eslint/indent": "off",
+		"@typescript-eslint/semi": ["error", "always"],
+		"import/prefer-default-export": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"no-unused-vars": "warn",
+		"comma-dangle": "off",
+		"@typescript-eslint/comma-dangle": "off",
+		"@typescript-eslint/consistent-type-imports": "off",
+		"@typescript-eslint/space-before-function-paren": "off",
+		"@typescript-eslint/naming-convention": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/no-floating-promises": "off",
+		"no-trailing-spaces": "off",
 		"react/display-name": "off",
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"quote-props": "off",
 		"array-callback-return": "off",
 
+		
 		// thorough check
 		"eslint no-extra-boolean-cast": [
 			"off",

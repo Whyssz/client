@@ -1,0 +1,16 @@
+import { Meta, StoryObj } from '@storybook/react';
+import { LoginForm } from './LoginForm';
+
+const meta = {
+	title: 'features/LoginForm',
+	component: LoginForm,
+	tags: ['autodocs'],
+} satisfies Meta<typeof LoginForm>;
+
+export default meta;
+
+export type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
+	args: {},
+};

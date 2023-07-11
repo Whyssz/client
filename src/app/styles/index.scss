@@ -3,8 +3,9 @@
 @import 'themes/light';
 @import 'themes/dark';
 
-.app {
-	background-color: var(--bg-color);
+.app,
+body {
+	background: var(--bg-color);
 	color: var(--primary-color);
 	min-height: 100vh;
 }

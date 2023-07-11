@@ -7,6 +7,8 @@
 	"Обновить страницу": "Reload page",
 	"Короткий язык": "En",
 	"Войти": "Sign In",
-	"increment": "Increment",
-	"decrement": "Decrement"
+	"Увеличить": "Increment",
+	"Уменьшить": "Decrement",
+	"Введите username": "Enter username",
+	"Введите password": "Enter password"
 }

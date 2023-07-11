@@ -17,63 +17,75 @@ interface ModalProps {
 	isOpen: boolean;
 	onClose?: () => void;
 	children: ReactNode | string;
+	lazy?: boolean;
 }
 
 const CLOSE_DELAY = 200;
 
-export const Modal: FC<ModalProps> = memo(
-	({ className, children, isOpen, onClose }: ModalProps) => {
-		const [isClosing, setIsClosing] = useState(false);
-		const timerRef = useRef<ReturnType<typeof setTimeout>>();
+export const Modal: FC<ModalProps> = memo((props: ModalProps) => {
+	const { className, children, isOpen, onClose, lazy } = props;
 
-		const mods: Record<string, boolean> = {
-			[styles.opened]: isOpen,
-			[styles.closing]: isClosing,
-		};
+	const [isMounted, setIsMounted] = useState(false);
+	const [isClosing, setIsClosing] = useState(false);
+	const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
-		const onContentClick: MouseEventHandler<HTMLDivElement> = e => {
-			e.stopPropagation();
-		};
+	const mods: Record<string, boolean> = {
+		[styles.opened]: isOpen,
+		[styles.closing]: isClosing,
+	};
 
-		const closeHandler = useCallback(() => {
-			if (onClose) {
-				setIsClosing(true);
-				timerRef.current = setTimeout(() => {
-					onClose();
-					setIsClosing(false);
-				}, CLOSE_DELAY);
+	const onContentClick: MouseEventHandler<HTMLDivElement> = e => {
+		e.stopPropagation();
+	};
+
+	const closeHandler = useCallback(() => {
+		if (onClose) {
+			setIsClosing(true);
+			timerRef.current = setTimeout(() => {
+				onClose();
+				setIsClosing(false);
+			}, CLOSE_DELAY);
+		}
+	}, [onClose]);
+
+	const onKeyDown = useCallback(
+		(e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				closeHandler();
 			}
-		}, [onClose]);
+		},
+		[closeHandler]
+	);
 
-		const onKeyDown = useCallback(
-			(e: KeyboardEvent) => {
-				if (e.key === 'Escape') {
-					closeHandler();
-				}
-			},
-			[closeHandler]
-		);
+	useEffect(() => {
+		if (isOpen) {
+			window.addEventListener('keydown', onKeyDown);
+		}
 
-		useEffect(() => {
-			if (isOpen) {
-				window.addEventListener('keydown', onKeyDown);
-			}
+		return () => {
+			clearTimeout(timerRef.current);
+		};
+	}, [isOpen, onKeyDown]);
 
-			return () => {
-				clearTimeout(timerRef.current);
-			};
-		}, [isOpen, onKeyDown]);
+	useEffect(() => {
+		if (isOpen) {
+			setIsMounted(true);
+		}
+	}, [isOpen]);
 
-		return (
-			<Portal>
-				<div className={classNames(styles.Modal, mods, [className])}>
-					<div className={styles.overlay} onClick={closeHandler}>
-						<div className={styles.content} onClick={onContentClick}>
-							{children}
-						</div>
+	if (lazy && !isMounted) {
+		return null;
+	}
+
+	return (
+		<Portal>
+			<div className={classNames(styles.Modal, mods, [className])}>
+				<div className={styles.overlay} onClick={closeHandler}>
+					<div className={styles.content} onClick={onContentClick}>
+						{children}
 					</div>
 				</div>
-			</Portal>
-		);
-	}
-);
+			</div>
+		</Portal>
+	);
+});
