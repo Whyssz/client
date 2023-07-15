@@ -20,7 +20,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install modules
         run: npm install --legacy-peer-deps
-      - name: build production project
+    - name: build production project
         run: npm run build:prod
         if: always()
       - name: linting typescript
@@ -32,6 +32,7 @@ jobs:
         if: always()
         run: npm run test:unit
 
+      # if you need screen tests, then change loki to Storycap + reg-cli https://github.com/oblador/loki/issues/446
       # - name: build storybook
       #   run: npm run storybook:build
       #   if: always()

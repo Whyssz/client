@@ -7,6 +7,7 @@ const meta = {
 	title: 'pages/AboutPage',
 	component: AboutPage,
 	tags: ['autodocs'],
+	decorators: [ThemeDecorator()],
 } satisfies Meta<typeof AboutPage>;
 
 export default meta;

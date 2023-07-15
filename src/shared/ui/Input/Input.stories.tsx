@@ -1,10 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { ThemeDecorator } from 'shared/config/storybook/Decorators';
 import { Input } from './Input';
 
 const meta = {
 	title: 'shared/Input',
 	component: Input,
 	tags: ['autodocs'],
+	decorators: [ThemeDecorator()],
 } satisfies Meta<typeof Input>;
 
 export default meta;

@@ -80,8 +80,10 @@
 		"react-hooks/exhaustive-deps": "warn",
 		"quote-props": "off",
 		"array-callback-return": "off",
+		"@typescript-eslint/no-dynamic-delete": "off",
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/prefer-ts-expect-error": "warn",
 
-		
 		// thorough check
 		"eslint no-extra-boolean-cast": [
 			"off",

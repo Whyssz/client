@@ -7,6 +7,7 @@ const meta = {
 	title: 'pages/MainPage',
 	component: MainPage,
 	tags: ['autodocs'],
+	decorators: [ThemeDecorator()],
 } satisfies Meta<typeof MainPage>;
 
 export default meta;

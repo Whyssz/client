@@ -1,5 +1,5 @@
 import path from 'path';
-import webpack, { RuleSetRule } from 'webpack';
+import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { BuildPaths } from '../build/types/config';
 
@@ -32,6 +32,30 @@ export default ({ config }: { config: webpack.Configuration }) => {
 		use: ['@svgr/webpack'],
 	});
 	config.module?.rules?.push(buildCssLoader(true));
+
+	// fix for storybook
+	if (config?.resolve?.alias) {
+		config.resolve.alias = {
+			app: path.resolve(__dirname, '../../src/app'),
+			entities: path.resolve(__dirname, '../../src/entities'),
+			features: path.resolve(__dirname, '../../src/features'),
+			pages: path.resolve(__dirname, '../../src/pages'),
+			shared: path.resolve(__dirname, '../../src/shared'),
+			widgets: path.resolve(__dirname, '../../src/widgets'),
+		};
+	}
+	if (config?.resolve?.roots) {
+		config.resolve.roots = [
+			path.resolve(__dirname, '../public'),
+			'node_modules',
+		];
+	}
+
+	config?.plugins?.push(
+		new DefinePlugin({
+			__IS_DEV__: true,
+		})
+	);
 
 	return config;
 };

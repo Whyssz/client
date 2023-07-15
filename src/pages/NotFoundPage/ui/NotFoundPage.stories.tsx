@@ -7,6 +7,7 @@ const meta = {
 	title: 'pages/NotFoundPage',
 	component: NotFoundPage,
 	tags: ['autodocs'],
+	decorators: [ThemeDecorator()],
 } satisfies Meta<typeof NotFoundPage>;
 
 export default meta;

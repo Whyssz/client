@@ -6,7 +6,7 @@ export const MainDecorator = (theme: Theme) => (Story: StoryFn) =>
 	(
 		<ThemeProvider initialTheme={theme}>
 			<BrowserRouter>
-				<div className={`app ${theme}`}>
+				<div className={`app ${theme}`} style={{ padding: '10px' }}>
 					<Story />
 				</div>
 			</BrowserRouter>

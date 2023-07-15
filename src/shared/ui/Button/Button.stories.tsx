@@ -8,6 +8,7 @@ const meta = {
 	title: 'shared/Button',
 	component: Button,
 	tags: ['autodocs'],
+	decorators: [ThemeDecorator()],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -38,6 +39,14 @@ export const Outline: Story = {
 	args: {
 		children: 'Text',
 		theme: ButtonTheme.OUTLINE,
+	},
+};
+
+export const Disabled: Story = {
+	args: {
+		children: 'Text',
+		theme: ButtonTheme.OUTLINE,
+		disabled: true,
 	},
 };
 
