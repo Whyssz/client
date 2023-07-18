@@ -1,9 +1,5 @@
-import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { RoutePath } from 'shared/config/routerConfig/router.config';
-import { AppLinkTheme } from 'shared/config/themeConfig/theme.config';
+import { memo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
 import {
 	Button,
 	ButtonSize,
@@ -12,18 +8,17 @@ import {
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher/ui/LangSwitcher';
 
-import AboutIcon from 'shared/assets/icons/clarity_list.svg';
-import MainIcon from 'shared/assets/icons/home.svg';
+import { SidebarItemsList } from 'widgets/Sidebar/model/items';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
 	className?: string;
 }
 
-export const Sidebar: FC<SidebarProps> = ({ className }) => {
+export const Sidebar = memo(({ className }: SidebarProps) => {
 	const [collapsed, setCollapsed] = useState(false);
-
-	const { t } = useTranslation();
+	const [test, setTest] = useState(0);
 
 	const onToggle = () => {
 		setCollapsed(!collapsed);
@@ -39,22 +34,13 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 			)}
 		>
 			<div className={styles.items}>
-				<AppLink
-					className={styles.item}
-					theme={AppLinkTheme.INVERTED}
-					to={RoutePath.main}
-				>
-					<MainIcon className={styles.icon} />
-					{!collapsed && <span> {t('Страница главная')}</span>}
-				</AppLink>
-				<AppLink
-					className={styles.item}
-					theme={AppLinkTheme.INVERTED}
-					to={RoutePath.about}
-				>
-					<AboutIcon className={styles.icon} />
-					{!collapsed && <span>{t('Страница о нас')}</span>}
-				</AppLink>
+				{SidebarItemsList.map(item => (
+					<SidebarItem
+						key={item.path}
+						collapsed={collapsed}
+						item={item}
+					/>
+				))}
 			</div>
 			<Button
 				data-testid='sidebar-toggle'
@@ -72,4 +58,4 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 			</div>
 		</div>
 	);
-};
+});

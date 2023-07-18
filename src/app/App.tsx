@@ -1,9 +1,9 @@
 import { userActions } from 'entities/User';
 import { Suspense, useEffect, type FC } from 'react';
 import { classNames } from 'shared/lib/classNames';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { useAppDispatch } from './providers/StoreProvider/config/store';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
 

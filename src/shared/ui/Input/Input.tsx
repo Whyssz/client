@@ -34,6 +34,7 @@ export const Input = memo((props: InputProps) => {
 		isOpen,
 		...otherProps
 	} = props;
+	
 	const [isFocused, setIsFocused] = useState(false);
 	const [caretPosition, setCaretPosition] = useState(0);
 

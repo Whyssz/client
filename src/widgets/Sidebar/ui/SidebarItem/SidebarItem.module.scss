@@ -1,0 +1,27 @@
+.item {
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+}
+
+a {
+	transition: all 0.2s;
+	opacity: 1;
+	visibility: visible;
+}
+
+svg {
+	margin-right: 15px;
+	fill: var(--inverted-primary-color);
+}
+
+.collapsed {
+	width: var(--sidebar-width-collapsed);
+
+	.item {
+		a {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}

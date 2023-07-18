@@ -1,11 +1,10 @@
-/* eslint-disable i18next/no-literal-string */
-import { useAppDispatch } from 'app/providers/StoreProvider/config/store';
 import { getUserAuthData, userActions } from 'entities/User';
 import { LoginModal } from 'features/AuthByUserName';
-import { useCallback, useState, type FC } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import styles from './Navbar.module.scss';
 
@@ -13,7 +12,7 @@ interface NavbarProps {
 	className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = ({ className }) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
 	const [isAuthModal, setIsAuthModal] = useState(false);
 
 	const { t } = useTranslation();
@@ -59,4 +58,4 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
 			<LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
 		</div>
 	);
-};
+});

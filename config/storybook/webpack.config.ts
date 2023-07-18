@@ -33,7 +33,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 	});
 	config.module?.rules?.push(buildCssLoader(true));
 
-	// fix for storybook
+	// fix storybook alias
 	if (config?.resolve?.alias) {
 		config.resolve.alias = {
 			app: path.resolve(__dirname, '../../src/app'),
@@ -44,6 +44,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 			widgets: path.resolve(__dirname, '../../src/widgets'),
 		};
 	}
+	
 	if (config?.resolve?.roots) {
 		config.resolve.roots = [
 			path.resolve(__dirname, '../public'),
