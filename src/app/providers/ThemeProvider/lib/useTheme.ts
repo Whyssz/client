@@ -15,15 +15,15 @@ export const useTheme = (): UseThemeResult => {
 	const { theme, setTheme } = useContext(ThemeContext);
 
 	const toggleTheme = () => {
-		const nextTheme = usedThemes[theme];
+		const nextTheme = usedThemes[theme || Theme.LIGHT];
 
-		setTheme(nextTheme);
+		setTheme?.(nextTheme);
 		document.body.className = nextTheme;
 		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, nextTheme);
 	};
 
 	return {
-		theme,
+		theme: theme || Theme.LIGHT,
 		toggleTheme,
 	};
 };

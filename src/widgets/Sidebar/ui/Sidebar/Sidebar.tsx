@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	Button,
 	ButtonSize,
@@ -18,7 +18,6 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
 	const [collapsed, setCollapsed] = useState(false);
-	const [test, setTest] = useState(0);
 
 	const onToggle = () => {
 		setCollapsed(!collapsed);

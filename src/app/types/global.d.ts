@@ -1,4 +1,5 @@
 declare const __IS_DEV__: boolean;
+declare const __API_URL__: string;
 
 declare module '*.scss' {
 	type IClassNames = Record<string, string>;
@@ -14,3 +15,7 @@ declare module '*.svg' {
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
+
+type DeepPartial<T> = T extends object
+	? { [P in keyof T]?: DeepPartial<T[P]> }
+	: T;

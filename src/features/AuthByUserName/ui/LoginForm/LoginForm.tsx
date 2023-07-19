@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	DynamicModuleLoader,
 	ReducersList,
@@ -61,7 +61,7 @@ const LoginForm = memo(
 			);
 
 			if (result.meta.requestStatus === 'fulfilled') {
-				onSuccess();
+				onSuccess?.();
 			}
 		}, [dispatch, username, password, onSuccess]);
 

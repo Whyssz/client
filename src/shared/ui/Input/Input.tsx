@@ -6,7 +6,7 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './Input.module.scss';
 
 type OmitInputAttributes = Omit<
@@ -34,7 +34,7 @@ export const Input = memo((props: InputProps) => {
 		isOpen,
 		...otherProps
 	} = props;
-	
+
 	const [isFocused, setIsFocused] = useState(false);
 	const [caretPosition, setCaretPosition] = useState(0);
 

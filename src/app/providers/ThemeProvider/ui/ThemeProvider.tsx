@@ -1,4 +1,10 @@
-import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
+import {
+	ReactElement,
+	ReactNode,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 import {
 	Theme,
 	ThemeContext,
@@ -10,10 +16,10 @@ interface ThemeProviderProps {
 	children: ReactNode;
 }
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({
+export const ThemeProvider = ({
 	children,
 	initialTheme,
-}) => {
+}: ThemeProviderProps): ReactElement => {
 	const [theme, setTheme] = useState<Theme>(
 		initialTheme || defaultTheme
 	);

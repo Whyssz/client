@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
+import { defaultDecorators } from 'shared/config/decorators/utils/defaultDecorators';
 import {
 	StoreDecorator,
 	ThemeDecorator,
@@ -10,7 +11,7 @@ const meta = {
 	title: 'widgets/Navbar',
 	component: Navbar,
 	tags: ['autodocs'],
-	decorators: [StoreDecorator({}), ThemeDecorator()],
+	decorators: defaultDecorators,
 } satisfies Meta<typeof Navbar>;
 
 export default meta;

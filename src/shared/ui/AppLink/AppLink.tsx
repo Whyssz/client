@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { AppLinkTheme } from 'shared/config/themeConfig/theme.config';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import styles from './AppLink.module.scss';
 
 interface AppLinkProps extends LinkProps {

@@ -1,5 +1,5 @@
-import { FC, Suspense } from 'react';
-import { classNames } from 'shared/lib/classNames';
+import { ReactElement, Suspense } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
@@ -10,12 +10,12 @@ interface LoginModalProps {
 	onClose: () => void;
 }
 
-export const LoginModal: FC<LoginModalProps> = ({
+export const LoginModal = ({
 	className,
 	isOpen,
 	onClose,
 	...rest
-}) => {
+}: LoginModalProps): ReactElement => {
 	return (
 		<Modal
 			lazy

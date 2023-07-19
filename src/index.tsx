@@ -11,13 +11,13 @@ import { ThemeProvider } from './app/providers/ThemeProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	<StoreProvider>
-		<Router>
+	<Router>
+		<StoreProvider>
 			<ErrorBoundary>
 				<ThemeProvider>
 					<App />
 				</ThemeProvider>
 			</ErrorBoundary>
-		</Router>
-	</StoreProvider>
+		</StoreProvider>
+	</Router>
 );

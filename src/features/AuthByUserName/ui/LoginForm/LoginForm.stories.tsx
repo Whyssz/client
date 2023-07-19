@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import {
+	RouterDecorator,
 	StoreDecorator,
 	ThemeDecorator,
 } from 'shared/config/storybook/Decorators';
@@ -10,11 +11,13 @@ const meta = {
 	title: 'features/LoginForm',
 	component: LoginForm,
 	tags: ['autodocs'],
+
 	decorators: [
-		ThemeDecorator(),
 		StoreDecorator({
 			loginForm: { username: 'Username', password: 'pass123' },
 		}),
+		RouterDecorator,
+		ThemeDecorator(),
 	],
 } satisfies Meta<typeof LoginForm>;
 

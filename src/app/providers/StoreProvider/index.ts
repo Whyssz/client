@@ -2,6 +2,8 @@ export type {
 	ReducerManager,
 	ReduxStoreWithManager,
 	StateSchema,
+	ThunkExtraArg,
+	ThunkConfig,
 } from './config/StateSchema';
 export {
 	createReduxStore,

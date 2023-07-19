@@ -1,17 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
-import {
-	RouterDecorator,
-	StoreDecorator,
-	ThemeDecorator,
-} from 'shared/config/storybook/Decorators';
+import { defaultDecorators } from 'shared/config/decorators/utils/defaultDecorators';
+import { ThemeDecorator } from 'shared/config/storybook/Decorators';
 import MainPage from './MainPage';
 
 const meta = {
 	title: 'pages/MainPage',
 	component: MainPage,
 	tags: ['autodocs'],
-	decorators: [RouterDecorator, ThemeDecorator(), StoreDecorator({})],
+	decorators: defaultDecorators,
 } satisfies Meta<typeof MainPage>;
 
 export default meta;
