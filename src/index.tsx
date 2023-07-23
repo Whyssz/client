@@ -8,7 +8,9 @@ import 'app/styles/index.scss';
 import App from './app/App';
 import { ThemeProvider } from './app/providers/ThemeProvider';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+	document.getElementById('root') as HTMLElement
+);
 
 root.render(
 	<Router>

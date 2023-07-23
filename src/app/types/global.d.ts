@@ -15,6 +15,7 @@ declare module '*.svg' {
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
+declare module '*.webp';
 
 type DeepPartial<T> = T extends object
 	? { [P in keyof T]?: DeepPartial<T[P]> }

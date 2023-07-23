@@ -6,20 +6,21 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import styles from './Input.module.scss';
 
 type OmitInputAttributes = Omit<
 	InputHTMLAttributes<HTMLInputElement>,
-	'value' | 'onChange'
+	'value' | 'onChange' | 'readOnly'
 >;
 
 interface InputProps extends OmitInputAttributes {
 	className?: string;
-	value?: string;
+	value?: string | number;
 	label?: string;
 	autofocus?: boolean;
 	isOpen?: boolean;
+	readonly?: boolean;
 	onChange?: (value: string) => void;
 }
 
@@ -32,6 +33,7 @@ export const Input = memo((props: InputProps) => {
 		label,
 		autofocus,
 		isOpen,
+		readonly,
 		...otherProps
 	} = props;
 
@@ -57,19 +59,28 @@ export const Input = memo((props: InputProps) => {
 		setCaretPosition(e?.target?.selectionStart || 0);
 	};
 
+	const isCaretVisible = isFocused && !readonly;
+
 	useEffect(() => {
 		if (autofocus || isOpen) {
 			setIsFocused(true);
-			inputRef.current.focus();
+			inputRef.current?.focus();
 		}
 	}, [autofocus, isOpen]);
 
+	const mods: Mods = {
+		[styles.readonly]: readonly,
+	};
+
 	return (
-		<div className={classNames(styles.InputWrapper, {}, [className])}>
+		<div
+			className={classNames(styles.InputWrapper, mods, [className])}
+		>
 			{label && <label className={styles.label}>{`${label}>`}</label>}
 			<div className={styles.caretWrapper}>
 				<input
 					ref={inputRef}
+					readOnly={readonly}
 					value={value}
 					onChange={onChangeHandler}
 					type={type}
@@ -79,7 +90,7 @@ export const Input = memo((props: InputProps) => {
 					onSelect={onSelect}
 					{...otherProps}
 				/>
-				{isFocused && (
+				{isCaretVisible && (
 					<span
 						className={styles.caret}
 						style={{ left: `${caretPosition * 9}px` }}

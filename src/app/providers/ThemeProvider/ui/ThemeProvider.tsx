@@ -37,7 +37,7 @@ export const ThemeProvider = ({
 			localStorage.setItem('theme', Theme.LIGHT);
 			document.body.className = Theme.LIGHT;
 		} else {
-			document.body.className = localStorage.getItem('theme');
+			document.body.className = localStorage.getItem('theme') || Theme.LIGHT;
 		}
 	}, []);
 

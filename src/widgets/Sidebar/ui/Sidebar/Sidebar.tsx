@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	Button,
@@ -19,9 +19,9 @@ interface SidebarProps {
 export const Sidebar = memo(({ className }: SidebarProps) => {
 	const [collapsed, setCollapsed] = useState(false);
 
-	const onToggle = () => {
-		setCollapsed(!collapsed);
-	};
+	const onToggle = useCallback(() => {
+		setCollapsed(prev => !prev);
+	}, []);
 
 	return (
 		<div

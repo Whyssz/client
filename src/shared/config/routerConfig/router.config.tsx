@@ -4,6 +4,12 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
 
+type AppRoutesProps = RouteProps & {
+	authOnly?: boolean;
+};
+
+type ComboRouteProps = RouteProps & AppRoutesProps;
+
 export enum AppRoutes {
 	MAIN = 'main',
 	ABOUT = 'about',
@@ -21,10 +27,15 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.NOT_FOUND]: '*',
 };
 
-export const routerConfig: RouteProps[] = [
+export const routerConfig: ComboRouteProps[] = [
+	// export const routerConfig: RouteProps[] = [
 	{ path: RoutePath.main, element: <MainPage /> },
 	{ path: RoutePath.about, element: <AboutPage /> },
-	{ path: RoutePath.profile, element: <ProfilePage /> },
+	{
+		path: RoutePath.profile,
+		element: <ProfilePage />,
+		authOnly: true,
+	},
 
 	{ path: RoutePath.not_found, element: <NotFoundPage /> },
 ];

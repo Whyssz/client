@@ -1,4 +1,6 @@
-export { fetchProfileData } from './model/services/fetchProfileData';
+export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData';
+export { updateProfileData } from './model/services/updateProfileData/updateProfileData';
+
 export type { Profile, ProfileSchema } from './model/types/profile';
 
 export {
@@ -7,3 +9,9 @@ export {
 } from './model/slice/profileSlice';
 
 export { ProfileCard } from './ui/ProfileCard/ProfileCard';
+
+export { getProfileData } from './model/selectors/getProfileData/getProfileData';
+export { getProfileError } from './model/selectors/getProfileError/getProfileError';
+export { getProfileForm } from './model/selectors/getProfileForm/getProfileForm';
+export { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
+export { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly';
