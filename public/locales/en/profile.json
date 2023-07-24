@@ -10,5 +10,10 @@
 	"Ваш город": "City",
 	"Ваш возраст": "Age",
 	"Введите имя пользователя": "Enter you username",
-	"Введите ссылку на аватар": "Enter you profile avatar"
+	"Введите ссылку на аватар": "Enter you profile avatar",
+	"Имя и Фамилия обязательны": "First name and last name are required",
+	"Некорректный регион": "Incorrect country",
+	"Некорректный возраст": "Incorrect age",
+	"Данные не указаны": "Data not specified",
+	"Серверная ошибка при сохранении": "Server error on save"
 }

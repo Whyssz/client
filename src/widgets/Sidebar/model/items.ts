@@ -1,7 +1,7 @@
 import AboutIcon from 'shared/assets/icons/clarity_list.svg';
 import MainIcon from 'shared/assets/icons/home.svg';
 import ProfileIcon from 'shared/assets/icons/profile.svg';
-import { RoutePath } from 'shared/config/routerConfig/router.config';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 
 export interface SidebarItemType {
 	path: string;

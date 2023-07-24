@@ -37,6 +37,7 @@ export const DynamicModuleLoader = (
 				});
 			}
 		};
+		// only mount/unmount
 		// eslint-disable-next-line
 	}, []);
 

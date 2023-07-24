@@ -25,7 +25,7 @@ export const ProfilePageHeader = ({
 	const dispatch = useAppDispatch();
 
 	const onEdit = useCallback(() => {
-		dispatch(profileActions.setReadOnly(false));
+		dispatch(profileActions.setReadonly(false));
 	}, [dispatch]);
 
 	const onCancelEdit = useCallback(() => {

@@ -1,4 +1,4 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
 export const getProfileIsLoading = (state: StateSchema) =>
-	state.profile?.isLoading || undefined;
+	state.profile?.isLoading || false;

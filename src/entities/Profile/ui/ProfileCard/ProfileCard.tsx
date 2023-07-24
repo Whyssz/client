@@ -61,19 +61,6 @@ export const ProfileCard = memo(
 			[onChangeAge]
 		);
 
-		if (isLoading) {
-			return (
-				<div
-					className={classNames(styles.ProfilePage, {}, [
-						className,
-						styles.loading,
-					])}
-				>
-					<Loader />
-				</div>
-			);
-		}
-
 		if (error) {
 			return (
 				<div
@@ -88,6 +75,19 @@ export const ProfileCard = memo(
 						text={t('Попробуйте обновить страницу')}
 						align={TextAlign.CENTER}
 					/>
+				</div>
+			);
+		}
+
+		if (isLoading) {
+			return (
+				<div
+					className={classNames(styles.ProfilePage, {}, [
+						className,
+						styles.loading,
+					])}
+				>
+					<Loader />
 				</div>
 			);
 		}

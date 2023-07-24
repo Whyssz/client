@@ -8,8 +8,6 @@ type AppRoutesProps = RouteProps & {
 	authOnly?: boolean;
 };
 
-type ComboRouteProps = RouteProps & AppRoutesProps;
-
 export enum AppRoutes {
 	MAIN = 'main',
 	ABOUT = 'about',
@@ -27,7 +25,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.NOT_FOUND]: '*',
 };
 
-export const routerConfig: ComboRouteProps[] = [
+export const routerConfig: AppRoutesProps[] = [
 	// export const routerConfig: RouteProps[] = [
 	{ path: RoutePath.main, element: <MainPage /> },
 	{ path: RoutePath.about, element: <AboutPage /> },

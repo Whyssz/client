@@ -2,7 +2,7 @@ import { getUserAuthData } from 'entities/User';
 import { Suspense, memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { routerConfig } from 'shared/config/routerConfig/router.config';
+import { routerConfig } from 'shared/config/routerConfig/routerConfig';
 import { PageLoader } from 'widgets/PageLoader/ui/PageLoader';
 
 export const AppRouter = memo((): React.ReactElement => {

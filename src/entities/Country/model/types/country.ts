@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 export enum Country {
-	Russia = 'Russia',
-	Belarus = 'Belarus',
-	Kazakhstan = 'Kazakhstan',
-	Armenia = 'Armenia',
+	RUSSIA = 'Russia',
+	BELARUS = 'Belarus',
+	KAZAKHSTAN = 'Kazakhstan',
+	ARMENIA = 'Armenia',
 }

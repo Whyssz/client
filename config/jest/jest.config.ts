@@ -4,7 +4,8 @@ export default {
 	rootDir: '../../',
 	globals: {
 		__IS_DEV__: true,
-		__API_URL__: ''
+		__API_URL__: '',
+		__PROJECT__: 'jest',
 	},
 	clearMocks: true,
 	testEnvironment: 'jsdom',
