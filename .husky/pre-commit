@@ -7,5 +7,3 @@ npm run lint:scss
 npm run test:unit
 npm run storybook:build
 npm run test:ui
-
-# manual check storybook and approve test:ui

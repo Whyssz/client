@@ -3,6 +3,7 @@ import { LoginModal } from 'features/AuthByUserName';
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -16,6 +17,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 	const [isAuthModal, setIsAuthModal] = useState(false);
 
 	const authData = useSelector(getUserAuthData);
+	const navigate = useNavigate();
 
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
@@ -30,9 +32,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
 	const onLogout = useCallback(() => {
 		dispatch(userActions.logout());
-	}, [dispatch]);
+		navigate('/');
+	}, [dispatch, navigate]);
 
-	if (authData) {
+	if (!authData) {
 		return (
 			<div className={classNames(styles.Navbar, {}, [className])}>
 				<Button

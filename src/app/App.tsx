@@ -1,5 +1,6 @@
-import { userActions } from 'entities/User';
+import { getUserInited, userActions } from 'entities/User';
 import { Suspense, useEffect, type FC } from 'react';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Navbar } from 'widgets/Navbar';
@@ -15,15 +16,15 @@ const App: FC = () => {
 		dispatch(userActions.initAuthData());
 	}, [dispatch]);
 
+	const inited = useSelector(getUserInited);
+
 	return (
 		<div className={classNames('app', {}, [theme])}>
 			<Suspense fallback=''>
 				<Navbar />
 				<div className='content-page'>
 					<Sidebar />
-					<div className='page-wrapper'>
-						<AppRouter />
-					</div>
+					{inited && <AppRouter />}
 				</div>
 			</Suspense>
 		</div>

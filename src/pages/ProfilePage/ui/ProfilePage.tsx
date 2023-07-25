@@ -54,7 +54,6 @@ const ProfilePage = ({
 			'Серверная ошибка при сохранении'
 		),
 	};
-
 	useEffect(() => {
 		if (__PROJECT__ !== 'storybook') {
 			dispatch(fetchProfileData());
