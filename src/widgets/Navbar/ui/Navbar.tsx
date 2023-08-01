@@ -1,8 +1,8 @@
-import { getUserAuthData, userActions } from 'entities/User';
+import { userActions } from 'entities/User';
+import { User } from 'entities/User/model/types/user.interface';
 import { LoginModal } from 'features/AuthByUserName';
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -11,12 +11,11 @@ import styles from './Navbar.module.scss';
 
 interface NavbarProps {
 	className?: string;
+	authData?: User;
 }
 
-export const Navbar = memo(({ className }: NavbarProps) => {
+export const Navbar = memo(({ className, authData }: NavbarProps) => {
 	const [isAuthModal, setIsAuthModal] = useState(false);
-
-	const authData = useSelector(getUserAuthData);
 	const navigate = useNavigate();
 
 	const { t } = useTranslation();
@@ -35,7 +34,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 		navigate('/');
 	}, [dispatch, navigate]);
 
-	if (!authData) {
+	if (authData) {
 		return (
 			<div className={classNames(styles.Navbar, {}, [className])}>
 				<Button

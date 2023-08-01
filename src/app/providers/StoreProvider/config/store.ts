@@ -8,7 +8,7 @@ import { userReducer } from 'entities/User';
 import { NavigateOptions, To } from 'react-router-dom';
 import { ReducersMapObject } from 'redux';
 import { $api } from 'shared/api/api';
-import { StateSchema } from './StateSchema';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 export const createReduxStore = (
@@ -24,6 +24,11 @@ export const createReduxStore = (
 
 	const reducerManager = createReducerManager(rootReducers);
 
+	const extraArg: ThunkExtraArg = {
+		api: $api,
+		navigate,
+	};
+
 	const store = configureStore({
 		reducer: reducerManager.reduce as Reducer<
 			CombinedState<StateSchema>
@@ -32,7 +37,7 @@ export const createReduxStore = (
 		preloadedState: initialState,
 		middleware: getDefaultMiddleware =>
 			getDefaultMiddleware({
-				thunk: { extraArgument: { api: $api, navigate } },
+				thunk: { extraArgument: extraArg },
 			}),
 	});
 	// @ts-expect-error

@@ -54,6 +54,7 @@ const ProfilePage = ({
 			'Серверная ошибка при сохранении'
 		),
 	};
+	
 	useEffect(() => {
 		if (__PROJECT__ !== 'storybook') {
 			dispatch(fetchProfileData());
@@ -67,7 +68,7 @@ const ProfilePage = ({
 		[dispatch]
 	);
 
-	const onChangeLastname = useCallback(
+	const onChangeLastname = useCallback(  
 		(value?: string) => {
 			dispatch(
 				profileActions.updateProfile({ lastname: value || '' })

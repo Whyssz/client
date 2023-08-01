@@ -9,12 +9,13 @@ export function buildLoaders(
 	const { isDev } = options;
 
 	const svgLoader = {
-		test: /\.svg$/i,
-		issuer: /\.[jt]sx?$/,
+		test: /\.svg$/,
 		use: ['@svgr/webpack'],
 	};
 
 	const babelLoader = buildBabelLoader(options);
+
+	const cssLoader = buildCssLoader(isDev);
 
 	const typescriptLoader = {
 		test: /\.tsx?$/,
@@ -22,10 +23,8 @@ export function buildLoaders(
 		exclude: /node_modules/,
 	};
 
-	const cssLoader = buildCssLoader(isDev);
-
 	const fileLoader = {
-		test: /\.(png|jpe?g|gif|woff|woof2)$/i,
+		test: /\.(png|jpe?g|gif|woff2|woff)$/i,
 		use: [
 			{
 				loader: 'file-loader',

@@ -12,10 +12,3 @@ export const MainDecorator = (theme: Theme) => (Story: StoryFn) =>
 			</BrowserRouter>
 		</ThemeProvider>
 	);
-// (
-// 	<BrowserRouter>
-// 		<div className={`app ${theme}`}>
-// 			<Story />
-// 		</div>
-// 	</BrowserRouter>
-// );

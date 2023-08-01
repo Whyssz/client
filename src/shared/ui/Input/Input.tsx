@@ -55,8 +55,12 @@ export const Input = memo((props: InputProps) => {
 		setIsFocused(false);
 	};
 
-	const onSelect = (e: any) => {
-		setCaretPosition(e?.target?.selectionStart || 0);
+	const onSelect = (
+		e: React.SyntheticEvent<HTMLInputElement, Event>
+	) => {
+		if (e.target instanceof HTMLInputElement) {
+			setCaretPosition(e.target?.selectionStart || 0);
+		}
 	};
 
 	const isCaretVisible = isFocused && !readonly;

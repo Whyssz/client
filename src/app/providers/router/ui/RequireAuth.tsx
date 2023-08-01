@@ -8,7 +8,6 @@ interface RequireAuthProps {
 }
 
 export function RequireAuth({ children, auth }: RequireAuthProps) {
-	console.log(auth);
 	if (!auth) {
 		return (
 			<Navigate
