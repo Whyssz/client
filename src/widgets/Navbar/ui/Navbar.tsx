@@ -1,5 +1,5 @@
 import { userActions } from 'entities/User';
-import { User } from 'entities/User/model/types/user.interface';
+import { User } from 'entities/User/model/types/user.types';
 import { LoginModal } from 'features/AuthByUserName';
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';

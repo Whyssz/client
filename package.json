@@ -94,6 +94,7 @@
 	"dependencies": {
 		"@babel/preset-env": "^7.22.5",
 		"@reduxjs/toolkit": "^1.9.5",
+		"@storybook/addon-actions": "^7.2.1",
 		"concurrently": "^8.2.0",
 		"file-loader": "^6.2.0",
 		"i18next": "^23.2.3",

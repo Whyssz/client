@@ -31,7 +31,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
 	});
 	config.module?.rules?.push(buildCssLoader(true));
 
-	// fix alias
 	config!.resolve!.alias = {
 		app: path.resolve(__dirname, '../../src/app'),
 		entities: path.resolve(__dirname, '../../src/entities'),

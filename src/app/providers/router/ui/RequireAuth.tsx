@@ -1,4 +1,4 @@
-import { User } from 'entities/User/model/types/user.interface';
+import { User } from 'entities/User/model/types/user.types';
 import { Navigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 

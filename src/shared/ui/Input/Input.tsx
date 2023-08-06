@@ -1,6 +1,5 @@
 import {
 	ChangeEvent,
-	InputHTMLAttributes,
 	memo,
 	useEffect,
 	useRef,
@@ -10,7 +9,7 @@ import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import styles from './Input.module.scss';
 
 type OmitInputAttributes = Omit<
-	InputHTMLAttributes<HTMLInputElement>,
+	ReactTagProps<'input'>,
 	'value' | 'onChange' | 'readOnly'
 >;
 
@@ -43,7 +42,9 @@ export const Input = memo((props: InputProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		onChange?.(e.target.value);
+		if (e.target instanceof HTMLInputElement) {
+			onChange?.(e.target.value);
+		}
 		setCaretPosition(e.target.value.length);
 	};
 

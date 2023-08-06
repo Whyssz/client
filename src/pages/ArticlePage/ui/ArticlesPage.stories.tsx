@@ -5,7 +5,7 @@ import { ThemeDecorator } from 'shared/config/storybook/Decorators';
 import ArticlesPage from './ArticlesPage';
 
 const meta = {
-	title: 'widgets/ArticlesPage',
+	title: 'pages/ArticlesPage',
 	component: ArticlesPage,
 	tags: ['autodocs'],
 	decorators: defaultDecorators,

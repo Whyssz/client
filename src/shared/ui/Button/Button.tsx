@@ -1,4 +1,4 @@
-import { memo, type ButtonHTMLAttributes } from 'react';
+import { memo } from 'react';
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import styles from './Button.module.scss';
 
@@ -13,12 +13,11 @@ export enum ButtonTheme {
 
 export enum ButtonSize {
 	M = 'size_m',
-	L = 'size_l', 
+	L = 'size_l',
 	Xl = 'size_xl',
 }
 
-interface ButtonProps
-	extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ReactTagProps<'button'> {
 	className?: string;
 	theme?: ButtonTheme;
 	square?: boolean;

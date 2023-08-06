@@ -1,8 +1,10 @@
 import {
+	getProfileData,
 	getProfileReadonly,
 	profileActions,
 	updateProfileData,
 } from 'entities/Profile';
+import { getUserAuthData } from 'entities/User';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -20,6 +22,9 @@ export const ProfilePageHeader = ({
 	className,
 }: ProfilePageHeaderProps): React.ReactElement => {
 	const { t } = useTranslation('profile');
+	const authData = useSelector(getUserAuthData);
+	const profileData = useSelector(getProfileData);
+	const canEdit = authData?.id === profileData?.id;
 
 	const readonly = useSelector(getProfileReadonly);
 	const dispatch = useAppDispatch();
@@ -41,31 +46,35 @@ export const ProfilePageHeader = ({
 			className={classNames(styles.ProfileHeader, {}, [className])}
 		>
 			<Text title={t('Профиль')} />
-			{readonly ? (
-				<Button
-					theme={ButtonTheme.OUTLINE}
-					className={styles.editBtn}
-					onClick={onEdit}
-				>
-					{t('Редактировать')}
-				</Button>
-			) : (
-				<>
-					<Button
-						theme={ButtonTheme.OUTLINE_RED}
-						className={styles.editBtn}
-						onClick={onCancelEdit}
-					>
-						{t('Отменить')}
-					</Button>
-					<Button
-						theme={ButtonTheme.OUTLINE}
-						className={styles.editBtn}
-						onClick={onSaveEdit}
-					>
-						{t('Сохранить')}
-					</Button>
-				</>
+			{canEdit && (
+				<div className={styles.btnsWrapper}>
+					{readonly ? (
+						<Button
+							theme={ButtonTheme.OUTLINE}
+							className={styles.editBtn}
+							onClick={onEdit}
+						>
+							{t('Редактировать')}
+						</Button>
+					) : (
+						<>
+							<Button
+								theme={ButtonTheme.OUTLINE_RED}
+								className={styles.editBtn}
+								onClick={onCancelEdit}
+							>
+								{t('Отменить')}
+							</Button>
+							<Button
+								theme={ButtonTheme.OUTLINE}
+								className={styles.editBtn}
+								onClick={onSaveEdit}
+							>
+								{t('Сохранить')}
+							</Button>
+						</>
+					)}
+				</div>
 			)}
 		</div>
 	);

@@ -67,7 +67,6 @@ const LoginForm = memo(
 
 		return (
 			<DynamicModuleLoader
-				removeAfterUnmount
 				reducers={initialReducers}
 			>
 				<form

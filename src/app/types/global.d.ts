@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 declare const __IS_DEV__: boolean;
 declare const __API_URL__: string;
 declare const __PROJECT__: 'storybook' | 'jest' | 'frontend';
@@ -22,3 +21,10 @@ declare module '*.webp';
 type DeepPartial<T> = T extends object
 	? { [P in keyof T]?: DeepPartial<T[P]> }
 	: T;
+
+/**
+ * default extends ButtonHTMLAttributes<HTMLButtonElement>
+ * but ComponentProps has more details
+ */
+// @ts-expect-error
+type ReactTagProps<T> = import('react').ComponentProps<T>;

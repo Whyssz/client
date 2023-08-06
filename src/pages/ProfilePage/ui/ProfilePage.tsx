@@ -11,15 +11,17 @@ import {
 	profileReducer,
 } from 'entities/Profile';
 import { ValidateProfileErrors } from 'entities/Profile/model/types/profile';
-import { ReactElement, useCallback, useEffect } from 'react';
+import { ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	DynamicModuleLoader,
 	ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -34,6 +36,7 @@ interface ProfilePageProps {
 const ProfilePage = ({
 	className,
 }: ProfilePageProps): ReactElement => {
+	const { id } = useParams<{ id: string }>();
 	const { t } = useTranslation('profile');
 	const dispatch = useAppDispatch();
 	const formData = useSelector(getProfileForm);
@@ -54,12 +57,12 @@ const ProfilePage = ({
 			'Серверная ошибка при сохранении'
 		),
 	};
-	
-	useEffect(() => {
-		if (__PROJECT__ !== 'storybook') {
-			dispatch(fetchProfileData());
+
+	useInitialEffect(() => {
+		if (id) {
+			dispatch(fetchProfileData(id));
 		}
-	}, [dispatch]);
+	});
 
 	const onChangeFirstname = useCallback(
 		(value?: string) => {
@@ -68,7 +71,7 @@ const ProfilePage = ({
 		[dispatch]
 	);
 
-	const onChangeLastname = useCallback(  
+	const onChangeLastname = useCallback(
 		(value?: string) => {
 			dispatch(
 				profileActions.updateProfile({ lastname: value || '' })
@@ -126,7 +129,7 @@ const ProfilePage = ({
 	);
 
 	return (
-		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+		<DynamicModuleLoader reducers={reducers}>
 			<div className={classNames('', {}, [className])}>
 				<ProfilePageHeader />
 				{validateErrors?.length &&
