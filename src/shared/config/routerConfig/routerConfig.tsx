@@ -31,6 +31,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.NOT_FOUND]: '*',
 };
 
+// also will change -> sidebar/selector/getSidebarItems
 export const routerConfig: AppRoute[] = [
 	{ path: RoutePath.main, element: <MainPage /> },
 	{ path: RoutePath.about, element: <AboutPage /> },

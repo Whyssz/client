@@ -11,10 +11,12 @@ export const usedThemes = {
 	app_dark_theme: Theme.ORANGE,
 	app_orange_theme: Theme.LIGHT,
 };
+
 export interface ThemeContextProps {
 	theme?: Theme;
 	setTheme?: (theme: Theme) => void;
 }
+
 export const LOCAL_STORAGE_THEME_KEY = 'theme';
 
 export const defaultTheme =

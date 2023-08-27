@@ -47,6 +47,8 @@ const AddCommentForm = (
 	const onSendHandler = useCallback(
 		(e: FormEvent<HTMLFormElement>) => {
 			// also SyntheticEvent<HTMLFormElement, SubmitEvent>
+			// e: React.SyntheticEvent<HTMLInputElement, Event>
+			// ChangeEvent / TouchEvent <HTMLInputElement>
 			e.preventDefault();
 			handleSubmit(text || '');
 			onCommentTextChange('');

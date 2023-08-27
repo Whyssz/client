@@ -1,12 +1,12 @@
 .app_orange_theme {
-	--bg-color: #373f98;
-	--inverted-bg-color: #616ef9;
+	--bg-color: #faf4fb;
+	--inverted-bg-color: #bd5012;
 
 	// --primary-color: #f4f4fb;
-	--primary-color: #5cc9ff;
-	--secondary-color: #1b95d2;
-	--inverted-primary-color: #2a033b;
-	--inverted-secondary-color: #3a46d1;
+	--primary-color: #9a1a0e;
+	--secondary-color: #d01f0e;
+	--inverted-primary-color: #dbd5dc;
+	--inverted-secondary-color: #faf4fb;
 
 	// skeleton
 	--skeleton-color: #fff;
@@ -14,4 +14,7 @@
 
 	// code
 	--code-bg: #fff;
+
+	// card
+	--card-bg: #d5d5d7;
 }

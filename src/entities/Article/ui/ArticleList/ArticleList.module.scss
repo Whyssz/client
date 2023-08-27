@@ -1,0 +1,19 @@
+.ArticleList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.SMALL {
+	&.skeleton {
+		width: 230px;
+	}
+}
+
+// .BIG {
+
+// }
+
+// .SMALL {
+
+// }

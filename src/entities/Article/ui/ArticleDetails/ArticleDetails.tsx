@@ -27,6 +27,7 @@ import { ArticleCodeComponent } from '../ArticleCodeComponent/ArticleCodeCompone
 import { ArticleImageComponent } from '../ArticleImageComponent/ArticleImageComponent';
 import { ArticleTextComponent } from '../ArticleTextComponent/ArticleTextComponent';
 import styles from './ArticleDetails.module.scss';
+
 interface ArticleDetailsProps {
 	className?: string;
 	id: string;

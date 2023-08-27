@@ -1,5 +1,5 @@
 import { getUserAuthData } from 'entities/User';
-import { Suspense, useCallback, useEffect } from 'react';
+import { Suspense, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import {
@@ -15,9 +15,7 @@ export const AppRouter = () => {
 	const renderWithWrapper = useCallback(
 		(route: AppRoute) => {
 			const element = (
-				<Suspense fallback={<PageLoader />}>
-					<div className='page-wrapper'>{route.element}</div>
-				</Suspense>
+				<Suspense fallback={<PageLoader />}>{route.element}</Suspense>
 			);
 			return (
 				<Route

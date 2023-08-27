@@ -4,7 +4,8 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	DynamicModuleLoader,
@@ -12,6 +13,8 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Page } from 'shared/ui/Page/Page';
 import { Text } from 'shared/ui/Text/Text';
 import {
 	getArticleCommentsError,
@@ -41,6 +44,11 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 	const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 	const commentsError = useSelector(getArticleCommentsError);
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
+	const onBackToList = useCallback(() => {
+		navigate(RoutePath.articles);
+	}, [navigate]);
 
 	const handleSubmit = useCallback(
 		(value: string) => {
@@ -55,23 +63,26 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
 	if (!id) {
 		return (
-			<div
+			<Page
 				className={classNames(styles.ArticleDetailsPage, {}, [
 					className,
 				])}
 			>
 				{t('Статья не найдена')}
-			</div>
+			</Page>
 		);
 	}
 
 	return (
 		<DynamicModuleLoader reducers={reducers}>
-			<div
+			<Page
 				className={classNames(styles.ArticleDetailsPage, {}, [
 					className,
 				])}
 			>
+				<Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
+					{t('Назад к списку')}
+				</Button>
 				<ArticleDetails id={id} />
 				<Text
 					className={styles.commentTitle}
@@ -82,7 +93,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 					isLoading={commentsIsLoading}
 					comments={commentsAll}
 				/>
-			</div>
+			</Page>
 		</DynamicModuleLoader>
 	);
 };

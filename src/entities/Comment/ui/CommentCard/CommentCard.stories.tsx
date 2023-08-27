@@ -22,7 +22,7 @@ const meta = {
 	},
 	decorators: defaultDecorators,
 } satisfies Meta<typeof CommentCard>;
-
+ 
 export default meta;
 
 export type Story = StoryObj<typeof meta>;

@@ -28,3 +28,7 @@ type DeepPartial<T> = T extends object
  */
 // @ts-expect-error
 type ReactTagProps<T> = import('react').ComponentProps<T>;
+
+type OptionalRecord<K extends keyof any, T> = {
+	[P in K]?: T;
+};

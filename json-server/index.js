@@ -41,13 +41,16 @@ server.post('/login', (req, res) => {
 	}
 });
 
-// authorization imitation (token) 
-server.use((req, res, next) => {
-	if (!req.headers.authorization) {
-		return res.status(403).json({ message: 'AUTH ERROR' });
-	}
-	next();
+server.get('/hello', (req, res) => {
+	res.json({ message: 'Welcome to the endpoint "hello"' });
 });
+
+// server.use((req, res, next) => {
+// 	if (!req.headers.authorization) {
+// 		return res.status(403).json({ message: 'AUTH ERROR' });
+// 	}
+// 	next();
+// });
 
 server.use(router);
 
