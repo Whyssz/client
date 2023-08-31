@@ -3,16 +3,24 @@ import {
 	Article,
 	ArticleView,
 } from 'entities/Article/model/types/article.types';
+import {
+	ArticleSortField,
+	SortOrder,
+} from 'features/ArticleSort/model/types/articleSort.types';
 
 export interface ArticlesPageSchema extends EntityState<Article> {
 	isLoading?: boolean;
 	error?: string;
 
-	view: ArticleView;
 	// pagination
 	page: number;
-	limit?: number;
+	limit: number;
 	hasMore: boolean;
+	// filters
+	view: ArticleView;
+	order: SortOrder;
+	sort: ArticleSortField;
+	search: string;
 
 	_inited: boolean;
 }
