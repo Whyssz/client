@@ -1,6 +1,7 @@
-import { ArticleView } from 'entities/Article';
+import { ArticleType, ArticleView } from 'entities/Article';
 import { ArticleViewSelector } from 'features/ArticleViewSelector/ArticleViewSelector';
 
+import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import {
 	ArticleSortField,
 	SortOrder,
@@ -11,6 +12,7 @@ import {
 	getArticlesPageSort,
 	getArticlesPageView,
 } from 'pages/ArticlePage';
+import { getArticlesPageType } from 'pages/ArticlePage/model/selectors/articlesPageSelectors';
 import { fetchArticleList } from 'pages/ArticlePage/model/service/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from 'pages/ArticlePage/model/slices/articlePageSlice';
 import { useCallback } from 'react';
@@ -38,6 +40,7 @@ export const ArticlesFilters = (
 	const order = useSelector(getArticlesPageOrder);
 	const sort = useSelector(getArticlesPageSort);
 	const search = useSelector(getArticlesPageSearch);
+	const type = useSelector(getArticlesPageType);
 
 	const fetchData = useCallback(() => {
 		dispatch(fetchArticleList({ replace: true }));
@@ -76,6 +79,15 @@ export const ArticlesFilters = (
 		(search: string) => {
 			dispatch(articlesPageActions.setSearch(search));
 			dispatch(articlesPageActions.setPage(1));
+			fetchData();
+		},
+		[dispatch, fetchData]
+	);
+
+	const onChangeType = useCallback(
+		(type: ArticleType) => {
+			dispatch(articlesPageActions.setType(type));
+			dispatch(articlesPageActions.setPage(1));
 			debouncedFetchData();
 		},
 		[dispatch, debouncedFetchData]
@@ -101,6 +113,7 @@ export const ArticlesFilters = (
 					onChange={onChangeSearch}
 				/>
 			</Card>
+			<ArticleTypeTabs value={type} onChangeType={onChangeType} />
 		</div>
 	);
 };

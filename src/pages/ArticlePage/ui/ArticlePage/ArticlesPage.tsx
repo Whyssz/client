@@ -1,6 +1,7 @@
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	DynamicModuleLoader,
@@ -9,6 +10,7 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from 'widgets/Page/ui/Page';
+import { ArticlesFilters } from '../../../../features/ArticleSort/ui/ArticlesFilters/ArticlesFilters';
 import {
 	getArticlesPageError,
 	getArticlesPageIsLoading,
@@ -20,7 +22,6 @@ import {
 	articlesPageReducer,
 	getArticles,
 } from '../../model/slices/articlePageSlice';
-import { ArticlesFilters } from '../../../../features/ArticleSort/ui/ArticlesFilters/ArticlesFilters';
 import styles from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -40,13 +41,14 @@ const ArticlesPage = (
 	const error = useSelector(getArticlesPageError);
 	const view = useSelector(getArticlesPageView);
 	const articles = useSelector(getArticles.selectAll);
+	const [urlParams] = useSearchParams();
 
 	const onLoadNextPart = useCallback(() => {
 		dispatch(fetchNextArticlesPage());
 	}, [dispatch]);
 
 	useInitialEffect(() => {
-		dispatch(initArticlesPage());
+		dispatch(initArticlesPage(urlParams));
 	});
 
 	return (

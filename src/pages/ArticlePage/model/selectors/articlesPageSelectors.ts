@@ -21,3 +21,5 @@ export const getArticlesPageSearch = (state: StateSchema) =>
 	state.articlesPage?.search ?? '';
 export const getArticlesPageInited = (state: StateSchema) =>
 	state.articlesPage?._inited;
+export const getArticlesPageType = (state: StateSchema) =>
+	state.articlesPage?.type;

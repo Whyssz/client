@@ -6,6 +6,7 @@ import {
 import { StateSchema } from 'app/providers/StoreProvider';
 import {
 	Article,
+	ArticleType,
 	ArticleView,
 } from 'entities/Article/model/types/article.types';
 import { ArticleSortField, SortOrder } from 'features/ArticleSort';
@@ -35,6 +36,7 @@ const articlePageSlice = createSlice({
 		sort: 'createdAt',
 		search: '',
 		order: 'asc',
+		type: ArticleType.ALL,
 
 		_inited: false,
 	}),
@@ -58,6 +60,9 @@ const articlePageSlice = createSlice({
 		setOrder: (state, action: PayloadAction<SortOrder>) => {
 			state.order = action.payload;
 		},
+		setType: (state, action: PayloadAction<ArticleType>) => {
+			state.type = action.payload;
+		},
 		initState: state => {
 			state.view = localStorage.getItem(
 				ARTICLE_VIEW_LOCALSTORAGE_KEY
@@ -79,7 +84,7 @@ const articlePageSlice = createSlice({
 			.addCase(fetchArticleList.fulfilled, (state, action) => {
 				state.isLoading = false;
 				articlesAdapter.addMany(state, action.payload);
-				state.hasMore = action.payload.length > 0;
+				state.hasMore = action.payload.length >= state.limit;
 
 				if (action.meta.arg.replace) {
 					articlesAdapter.setAll(state, action.payload);

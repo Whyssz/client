@@ -9,7 +9,7 @@ import styles from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
 	className?: string;
-	view: ArticleView;
+	view?: ArticleView;
 	onViewClick?: (view: ArticleView) => void;
 }
 
@@ -21,10 +21,7 @@ const viewTypes = [
 export const ArticleViewSelector = memo(
 	(props: ArticleViewSelectorProps): ReactElement => {
 		const { className, view, onViewClick } = props;
-		
-		// const onClick = (newView: ArticleView) => () => {
-		// 	onViewClick?.(newView);
-		// };
+
 		const onClick = (newView: ArticleView) => {
 			onViewClick?.(newView);
 		};
@@ -39,7 +36,9 @@ export const ArticleViewSelector = memo(
 					<Button
 						theme={ButtonTheme.CLEAR}
 						key={viewType.view}
-						onClick={() => onClick(viewType.view)}
+						onClick={() => {
+							onClick(viewType.view);
+						}}
 					>
 						<Icon
 							Svg={viewType.icon}
