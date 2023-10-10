@@ -3,10 +3,11 @@ import {
 	createSlice,
 	PayloadAction,
 } from '@reduxjs/toolkit';
+
 import { StateSchema } from 'app/providers/StoreProvider';
-import { Comment } from 'entities/Comment/index.js';
-import { fetchCommentsByArticleId } from '../service/fetchArticleComments/fetchCommentsByArticleId.ts';
-import { ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
+import { Comment } from 'entities/Comment';
+import { fetchCommentsByArticleId } from '../service/fetchArticleComments/fetchCommentsByArticleId';
+import { ArticleDetailsCommentsSchema } from '../types/articleDetailsCommentsSchema';
 
 const commentsAdapter = createEntityAdapter<Comment>({
 	selectId: comment => comment.id,
@@ -20,7 +21,7 @@ export const getArticleComments =
 	);
 
 const articleDetailsCommentsSlice = createSlice({
-	name: 'articleDetailsComments',
+	name: 'articleDetailsCommentsSlice',
 	initialState:
 		commentsAdapter.getInitialState<ArticleDetailsCommentsSchema>({
 			isLoading: false,

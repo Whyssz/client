@@ -1,11 +1,27 @@
 import { ArticleDetails } from 'entities/Article';
+import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { CommentList } from 'entities/Comment';
 import { AddCommentForm } from 'features/addCommentForm';
+import {
+	getArticleCommentsError,
+	getArticleCommentsIsLoading,
+} from 'pages/ArticleDetailsPage/model/selectors/comments';
+import { getArticleRecommendationsIsLoading } from 'pages/ArticleDetailsPage/model/selectors/recommendations';
+import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/service/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/service/fetchArticleComments/fetchCommentsByArticleId';
+import { fetchArticleRecommendations } from 'pages/ArticleDetailsPage/model/service/fetchArticleRecommendations/fetchArticleRecommendations';
+import {
+	articleDetailsCommentsReducer,
+	getArticleComments,
+} from 'pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
+import {
+	articleDetailsRecommendationsReducer,
+	getArticleRecommendations,
+} from 'pages/ArticleDetailsPage/model/slices/articleDetailsPageRecommendationsSlice';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	DynamicModuleLoader,
@@ -13,27 +29,17 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Text } from 'shared/ui/Text/Text';
-import { Page } from 'widgets/Page/ui/Page';
-import {
-	getArticleCommentsError,
-	getArticleCommentsIsLoading,
-} from '../model/selectors/comments';
-import { addCommentForArticle } from '../model/service/addCommentForArticle/addCommentForArticle';
-import { fetchCommentsByArticleId } from '../model/service/fetchArticleComments/fetchCommentsByArticleId.ts';
-import {
-	articleDetailsCommentsReducer,
-	getArticleComments,
-} from '../model/slices/articleDetailsCommentsSlice';
+import { Text, TextSize } from 'shared/ui/Text/Text';
+import { Page } from 'widgets/Page';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import styles from './ArticleDetailsPage.module.scss';
-
 interface ArticleDetailsPageProps {
 	className?: string;
 }
 
 const reducers: ReducersList = {
 	articleDetailsComments: articleDetailsCommentsReducer,
+	articleDetailsRecommendations: articleDetailsRecommendationsReducer,
 };
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
@@ -43,12 +49,14 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 	const commentsAll = useSelector(getArticleComments.selectAll);
 	const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 	const commentsError = useSelector(getArticleCommentsError);
-	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
+	const recommendations = useSelector(
+		getArticleRecommendations.selectAll
+	);
 
-	const onBackToList = useCallback(() => {
-		navigate(RoutePath.articles);
-	}, [navigate]);
+	const recommendationsIsLoading = useSelector(
+		getArticleRecommendationsIsLoading
+	);
+	const dispatch = useAppDispatch();
 
 	const handleSubmit = useCallback(
 		(value: string) => {
@@ -59,6 +67,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(id));
+		dispatch(fetchArticleRecommendations());
 	});
 
 	if (!id) {
@@ -80,12 +89,22 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 					className,
 				])}
 			>
-				<Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-					{t('Назад к списку')}
-				</Button>
+				<ArticleDetailsPageHeader />
 				<ArticleDetails id={id} />
 				<Text
+					className={styles.recommendTitle}
+					size={TextSize.L}
+					title={t('Рекомендуем')}
+				/>
+				<ArticleList
+					articles={recommendations}
+					isLoading={recommendationsIsLoading}
+					className={styles.recommendations}
+					target='_blank'
+				/>
+				<Text
 					className={styles.commentTitle}
+					size={TextSize.L}
 					title={t('Комментарии')}
 				/>
 				<AddCommentForm handleSubmit={handleSubmit} />

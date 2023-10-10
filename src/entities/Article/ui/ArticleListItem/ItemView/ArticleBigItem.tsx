@@ -4,10 +4,12 @@ import {
 	ArticleBlockType,
 	ArticleView,
 } from 'entities/Article/model/types/article.types';
-import { ReactElement, memo } from 'react';
+import { HTMLAttributeAnchorTarget, ReactElement, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import EyeIcon from 'shared/assets/icons/eye.svg';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Card } from 'shared/ui/Card/Card';
@@ -20,12 +22,12 @@ interface ArticleBigItemProps {
 	className?: string;
 	article: Article;
 	view?: ArticleView;
-	onOpenArticle: () => void;
+	target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleBigItem = memo(
 	(props: ArticleBigItemProps): ReactElement => {
-		const { className, article, onOpenArticle } = props;
+		const { className, article, target } = props;
 		const { t } = useTranslation();
 
 		const typesBlock = (
@@ -67,9 +69,14 @@ export const ArticleBigItem = memo(
 					/>
 				)}
 				<div className={styles.footer}>
-					<Button theme={ButtonTheme.OUTLINE} onClick={onOpenArticle}>
-						{t('Читать далее')}
-					</Button>
+					<AppLink
+						to={RoutePath.article_details + article.id}
+						target={target}
+					>
+						<Button theme={ButtonTheme.OUTLINE}>
+							{t('Читать далее')}
+						</Button>
+					</AppLink>
 					{viewsBlock}
 				</div>
 			</Card>

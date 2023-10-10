@@ -3,7 +3,7 @@ import {
 	StateSchema,
 	StoreProvider,
 } from 'app/providers/StoreProvider';
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import { articleDetailsReducer } from 'entities/Article/model/slices/articleDetailsSlice';
 import { profileReducer } from 'entities/Profile/model/slice/profileSlice';
 import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/AddCommentFormSlice';
@@ -20,18 +20,18 @@ const defaultAsyncReducers: ReducersList = {
 
 export const StoreDecorator =
 	(state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) =>
-		(StoryComponent: StoryFn) =>
-			(
-				<StoreProvider
-					initialState={state}
-					asyncReducers={{
-						...defaultAsyncReducers,
-						...asyncReducers,
-					}}
-				>
-					<StoryComponent />
-				</StoreProvider>
-			);
+	(StoryComponent: StoryFn) =>
+		(
+			<StoreProvider
+				initialState={state}
+				asyncReducers={{
+					...defaultAsyncReducers,
+					...asyncReducers,
+				}}
+			>
+				<StoryComponent />
+			</StoreProvider>
+		);
 
 // export const StoreDecorator =
 // 	(state: DeepPartial<StateSchema>) => (Story: StoryFn) => {

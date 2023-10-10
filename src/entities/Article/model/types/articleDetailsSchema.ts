@@ -1,3 +1,4 @@
+
 import { Article } from './article.types';
 
 export interface ArticleDetailsSchema {

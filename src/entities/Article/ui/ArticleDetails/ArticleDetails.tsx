@@ -3,7 +3,7 @@ import {
 	getArticleDetailsError,
 	getArticleDetailsIsLoading,
 } from 'entities/Article/model/selectors/getArticleDetails';
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import { articleDetailsReducer } from 'entities/Article/model/slices/articleDetailsSlice';
 import { fetchArticleById } from 'entities/Article/service/fetchArticleById/fetchArticleById';
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';

@@ -4,10 +4,7 @@ import {
 } from 'entities/Article/model/types/article.types';
 import { classNames } from 'shared/lib/classNames/classNames';
 
-import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
-import { useHover } from 'shared/lib/hooks/useHover/useHover';
+import { HTMLAttributeAnchorTarget } from 'react';
 import styles from './ArticleListItem.module.scss';
 import { ArticleBigItem } from './ItemView/ArticleBigItem';
 import { ArticleSmallItem } from './ItemView/ArticleSmallItem';
@@ -16,19 +13,14 @@ interface ArticleListItemProps {
 	className?: string;
 	article: Article;
 	view: ArticleView;
+	target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem = (
 	props: ArticleListItemProps
 ): React.ReactElement => {
-	const { className, article, view } = props;
-	const [isHover, bindHover] = useHover();
-
-	const navigate = useNavigate();
-
-	const onOpenArticle = useCallback(() => {
-		navigate(RoutePath.article_details + article.id);
-	}, [navigate, article.id]);
+	const { className, article, view, target } = props;
+	// const [isHover, bindHover] = useHover();
 
 	if (view === ArticleView.BIG) {
 		return (
@@ -38,10 +30,7 @@ export const ArticleListItem = (
 					styles[view],
 				])}
 			>
-				<ArticleBigItem
-					article={article}
-					onOpenArticle={onOpenArticle}
-				/>
+				<ArticleBigItem article={article} target={target} />
 			</div>
 		);
 	}
@@ -53,10 +42,7 @@ export const ArticleListItem = (
 				styles[view],
 			])}
 		>
-			<ArticleSmallItem
-				article={article}
-				onOpenArticle={onOpenArticle}
-			/>
+			<ArticleSmallItem article={article} target={target} />
 		</article>
 	);
 };

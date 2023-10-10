@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
+import { ArticleType } from 'entities/Article';
 import { ThemeDecorator } from 'shared/config/storybook/Decorators';
 import { Tabs } from './Tabs';
 
@@ -11,10 +12,10 @@ const meta = {
 		value: 'tab 2',
 		// onTabClick: action('onTabClick'),
 		tabs: [
-			{ value: 'tab 1', content: 'tab 1' },
-			{ value: 'tab 2', content: 'tab 2' },
-			{ value: 'tab 3', content: 'tab 3' },
-			{ value: 'tab 4', content: 'tab 4' },
+			{ value: ArticleType.ALL, content: 'tab 1' },
+			{ value: ArticleType.ECONOMIC, content: 'tab 2' },
+			{ value: ArticleType.IT, content: 'tab 3' },
+			{ value: ArticleType.SCIENCE, content: 'tab 4' },
 		],
 	},
 	decorators: [ThemeDecorator()],

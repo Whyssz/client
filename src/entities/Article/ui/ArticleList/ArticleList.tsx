@@ -3,6 +3,7 @@ import {
 	ArticleView,
 } from 'entities/Article/model/types/article.types';
 import { t } from 'i18next';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -14,6 +15,7 @@ interface ArticleListProps {
 	isLoading?: boolean;
 	articles: Article[];
 	view?: ArticleView;
+	target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticleView, className: string = '') => (
@@ -44,6 +46,7 @@ export const ArticleList = (
 		isLoading,
 		articles,
 		view = ArticleView.SMALL,
+		target,
 	} = props;
 
 	const renderArticle = (article: Article) => (
@@ -52,6 +55,7 @@ export const ArticleList = (
 			article={article}
 			view={view}
 			className={styles.card}
+			target={target}
 		/>
 	);
 
