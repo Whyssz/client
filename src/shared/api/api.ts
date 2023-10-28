@@ -1,7 +1,14 @@
 import axios from 'axios';
-import { getContentType } from './api.helper';
+import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 
 export const $api = axios.create({
 	baseURL: __API_URL__,
-	headers: getContentType(),
+});
+
+$api.interceptors.request.use(config => {
+	if (config.headers) {
+		config.headers.Authorization =
+			localStorage.getItem(USER_LOCALSTORAGE_KEY) || '';
+	}
+	return config;
 });

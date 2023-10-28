@@ -1,4 +1,3 @@
-import { Article } from 'entities/Article/model/types/article.types';
 import { HTMLAttributeAnchorTarget, memo, ReactElement } from 'react';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
@@ -7,6 +6,7 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Card } from 'shared/ui/Card/Card';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Text } from 'shared/ui/Text/Text';
+import { Article } from '../../../model/types/article.types';
 import styles from '../ArticleListItem.module.scss';
 
 interface ArticleSmallItemProps {

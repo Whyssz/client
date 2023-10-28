@@ -2,22 +2,6 @@ import { ArticleDetails } from 'entities/Article';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import { CommentList } from 'entities/Comment';
 import { AddCommentForm } from 'features/addCommentForm';
-import {
-	getArticleCommentsError,
-	getArticleCommentsIsLoading,
-} from 'pages/ArticleDetailsPage/model/selectors/comments';
-import { getArticleRecommendationsIsLoading } from 'pages/ArticleDetailsPage/model/selectors/recommendations';
-import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/service/addCommentForArticle/addCommentForArticle';
-import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/service/fetchArticleComments/fetchCommentsByArticleId';
-import { fetchArticleRecommendations } from 'pages/ArticleDetailsPage/model/service/fetchArticleRecommendations/fetchArticleRecommendations';
-import {
-	articleDetailsCommentsReducer,
-	getArticleComments,
-} from 'pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
-import {
-	articleDetailsRecommendationsReducer,
-	getArticleRecommendations,
-} from 'pages/ArticleDetailsPage/model/slices/articleDetailsPageRecommendationsSlice';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -31,6 +15,22 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page';
+import {
+	getArticleCommentsError,
+	getArticleCommentsIsLoading,
+} from '../../model/selectors/comments';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
+import { addCommentForArticle } from '../../model/service/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/service/fetchArticleComments/fetchCommentsByArticleId';
+import { fetchArticleRecommendations } from '../../model/service/fetchArticleRecommendations/fetchArticleRecommendations';
+import {
+	articleDetailsCommentsReducer,
+	getArticleComments,
+} from '../../model/slices/articleDetailsCommentsSlice';
+import {
+	articleDetailsRecommendationsReducer,
+	getArticleRecommendations,
+} from '../../model/slices/articleDetailsPageRecommendationsSlice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import styles from './ArticleDetailsPage.module.scss';
 interface ArticleDetailsPageProps {

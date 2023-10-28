@@ -1,10 +1,3 @@
-import {
-	getArticleDetailsData,
-	getArticleDetailsError,
-	getArticleDetailsIsLoading,
-} from 'entities/Article/model/selectors/getArticleDetails';
-import { articleDetailsReducer } from 'entities/Article/model/slices/articleDetailsSlice';
-import { fetchArticleById } from 'entities/Article/service/fetchArticleById/fetchArticleById';
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
@@ -20,9 +13,16 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
 import {
+	getArticleDetailsData,
+	getArticleDetailsError,
+	getArticleDetailsIsLoading,
+} from '../../model/selectors/getArticleDetails';
+import { articleDetailsReducer } from '../../model/slices/articleDetailsSlice';
+import {
 	ArticleBlock,
 	ArticleBlockType,
 } from '../../model/types/article.types';
+import { fetchArticleById } from '../../service/fetchArticleById/fetchArticleById';
 import { ArticleCodeComponent } from '../ArticleCodeComponent/ArticleCodeComponent';
 import { ArticleImageComponent } from '../ArticleImageComponent/ArticleImageComponent';
 import { ArticleTextComponent } from '../ArticleTextComponent/ArticleTextComponent';

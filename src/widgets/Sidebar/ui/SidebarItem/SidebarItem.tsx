@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { AppLinkTheme } from 'shared/config/themeConfig/theme.config';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { SidebarItemProps } from 'widgets/Sidebar/model/types/sidebar';
+import { SidebarItemProps } from '../../model/types/sidebar';
 import styles from './SidebarItem.module.scss';
 
 export const SidebarItem = memo(

@@ -1,3 +1,4 @@
+import { ThemeSwitcher } from 'features/ThemeSwitcher/ThemeSwitcher';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
@@ -5,11 +6,10 @@ import {
 	ButtonSize,
 	ButtonTheme,
 } from 'shared/ui/Button/Button';
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher/ui/LangSwitcher';
 
 import { useSelector } from 'react-redux';
-import { getSidebarItems } from 'widgets/Sidebar/model/selectors/getSidebarItems';
+import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import styles from './Sidebar.module.scss';
 

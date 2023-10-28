@@ -3,7 +3,7 @@ import {
 	ArticleBlockText,
 	ArticleBlockType,
 	ArticleView,
-} from 'entities/Article/model/types/article.types';
+} from '../../../model/types/article.types';
 import { HTMLAttributeAnchorTarget, ReactElement, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import EyeIcon from 'shared/assets/icons/eye.svg';

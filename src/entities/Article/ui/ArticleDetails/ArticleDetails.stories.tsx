@@ -3,7 +3,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import {
 	ArticleBlockType,
 	ArticleType,
-} from 'entities/Article/model/types/article.types';
+} from '../../model/types/article.types';
 import {
 	RouterDecorator,
 	StoreDecorator,

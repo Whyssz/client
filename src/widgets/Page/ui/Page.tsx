@@ -16,6 +16,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 import { getScrollByPath } from '../ScrollSave/model/selectors/scrollSelector';
 import { scrollActions } from '../ScrollSave/model/slice/scrollSlice';
+import { PAGE_ID } from './constants';
 import styles from './Page.module.scss';
 
 interface PageProps {
@@ -68,6 +69,7 @@ export const Page = memo((props: PageProps): ReactElement => {
 			ref={wrapperRef}
 			onScroll={onScroll}
 			className={classNames(styles.Page, {}, [className])}
+			id={PAGE_ID}
 		>
 			{children}
 			{onScrollEnd ? (

@@ -1,5 +1,4 @@
 import { getArticleDetailsData } from 'entities/Article';
-import { getCanEditArticle } from 'pages/ArticleDetailsPage/model/selectors/article';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -7,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { getCanEditArticle } from '../../model/selectors/article';
 import styles from './ArticleDetailsPageHeader.module.scss';
 interface ArticleDetailsPageHeaderProps {
 	className?: string;

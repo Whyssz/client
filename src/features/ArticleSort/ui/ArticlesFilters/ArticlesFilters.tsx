@@ -3,10 +3,6 @@ import { ArticleViewSelector } from 'features/ArticleViewSelector/ArticleViewSel
 
 import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import {
-	ArticleSortField,
-	SortOrder,
-} from 'features/ArticleSort/model/types/articleSort.types';
-import {
 	getArticlesPageOrder,
 	getArticlesPageSearch,
 	getArticlesPageSort,
@@ -23,6 +19,10 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
+import {
+	ArticleSortField,
+	SortOrder,
+} from '../../model/types/articleSort.types';
 import { ArticlesSortSelector } from '../ArticleSortSelector/ArticleSortSelector';
 import styles from './ArticlesFilters.module.scss';
 
